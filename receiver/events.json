@@ -1,0 +1,24 @@
+[
+    {
+        "author": "James Brownly",
+        "average_rating": 5,
+        "genre": "Horror",
+        "id": "d1f0851",
+        "isbn-10": "1591142210",
+        "isbn-13": "978-1591142218",
+        "publisher": "FunHouse Books",
+        "title": "Friday the 13th",
+        "total_number_of_ratings": 1
+    },
+    {
+        "author": "James Brownly",
+        "average_rating": 5,
+        "genre": "Horror",
+        "id": "d1f0851",
+        "isbn-10": "1591142210",
+        "isbn-13": "978-1591142218",
+        "publisher": "FunHouse Books",
+        "title": "Friday the 13th",
+        "total_number_of_ratings": 1
+    }
+]

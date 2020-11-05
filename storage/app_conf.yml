@@ -1,0 +1,13 @@
+version: 1
+datastore:
+  user: mikes_python
+  password: P@ssw0rd
+  hostname: python3855lab5.eastus.cloudapp.azure.com
+  port: 3306
+  db: events
+
+events:
+    hostname: python3855lab5.eastus.cloudapp.azure.com
+    port: 9092
+    topic: events
+

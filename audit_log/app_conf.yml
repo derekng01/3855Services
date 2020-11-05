@@ -1,0 +1,13 @@
+version: 1
+eventstore1:
+        url: http://localhost:8090/readers/adding_book
+
+eventstore2:
+    url: http://localhost:8090/readers/user
+
+events:
+    hostname: python3855lab5.eastus.cloudapp.azure.com
+    port: 9092
+    topic: events
+
+

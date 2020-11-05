@@ -1,0 +1,142 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: This API is for auditing
+    url: https://virtserver.swaggerhub.com/a010553062/Acit3855_Lab1/1.0.0
+info:
+  description: This API receives users reading habits and provides reccomendations to users/publishers
+  version: "1.0.0"
+  title: Book Reccomendation API
+  contact:
+    email: dng76@my.bcit.ca
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: readers
+    description: Adding/Rating/Reccomendation of books
+
+paths:
+  /readers/adding_book:
+    get:
+      tags:
+        - readers
+      summary: gets new reader books list from history
+      operationId: app.get_reader_book
+      description: Gets books from event store
+      parameters:
+        - in: query
+          name: index
+          description: Gets the books at index from event store
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successfully returned a list of books added
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/book'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+
+
+  /readers/user:
+    get:
+      tags:
+        - Bugs
+      summary: gets new user
+      operationId: app.get_reader_user
+      description: Gets users added after a timestamp
+      parameters:
+        - in: query
+          name: index
+          description: Gets the readers at index from event store
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successfully returned a list of readers
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/reader'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+
+components:
+  schemas:
+    book:
+      type: object
+      required:
+        - title
+        - author
+        - publisher
+        - genre
+        - isbn_10
+        - isbn_13
+        - reader_rating
+        - reader_id
+      properties:
+        title:
+          type: string
+          example: Friday the 13th
+        author:
+          type: string
+          example: James Brownly
+        publisher:
+          type: string
+          example: FunHouse Books
+        genre:
+          type: string
+          example: Horror
+        isbn_10:
+          type: string
+          example: "1591142210"
+        isbn_13:
+          type: string
+          example: "978-1591142218"
+        reader_rating:
+          type: integer
+          example: 10
+        reader_id:
+          type: string
+          format: uuid
+          example: d1faa51
+    reader:
+      type: object
+      required:
+        - name
+        - reader_id
+      properties:
+        name:
+          type: string
+          example: John Doe
+        reader_id:
+          type: string
+          format: uuid
+          example: d1faa51
+

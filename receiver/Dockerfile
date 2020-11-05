@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-LABEL maintainer="jgotengco3@my.bcit.ca"
+LABEL maintainer="dkng@dkng.ca"
 RUN apt-get update -y && \
 	apt-get install -y python3 python3-pip
 COPY ./requirements.txt /app/requirements.txt

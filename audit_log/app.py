@@ -2,6 +2,7 @@ import connexion
 from connexion import NoContent
 import json
 import requests
+from flask_cors import CORS, cross_origin
 
 from datetime import datetime
 

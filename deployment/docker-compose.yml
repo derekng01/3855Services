@@ -64,7 +64,7 @@ services:
         depends_on:
             - "storage"
     audit_log:
-        image: audit_log
+        image: audit
         ports:
             - "8110:8110"
         depends_on:

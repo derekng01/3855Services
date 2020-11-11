@@ -83,7 +83,6 @@ def get_reader_user(index):
 app = connexion.FlaskApp(__name__, specification_dir='')
 CORS(app.app)
 app.app.config['CORS_HEADERS'] = 'Content-Type'
-app.add_api('openapi.yaml', base_path='/', strict_validation=True, validate_responses=True)
 app.add_api('lab7_api.yaml', base_path='/', strict_validation=True, validate_responses=True)
 
 if __name__ == '__main__':

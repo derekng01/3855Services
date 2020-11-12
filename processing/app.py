@@ -63,12 +63,12 @@ def populate_stats():
 
     current_time= datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')
 
-#     try:
-#         with open(app_config['datastore']['filename'], 'r') as f:
-#             data_read = f.read()
-#             stats_info = json.loads(data_read)
+    try:
+        with open(app_config['datastore']['filename'], 'r') as f:
+            data_read = f.read()
+            stats_info = json.loads(data_read)
 
-#     except FileNotFoundError:
+    except FileNotFoundError:
 
 #         with open(app_config['datastore']['filename'], 'w') as f:
 #             json_template = {

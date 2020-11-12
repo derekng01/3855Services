@@ -68,7 +68,7 @@ def populate_stats():
             data_read = f.read()
             stats_info = json.loads(data_read)
 
-    except FileNotFoundError:
+#     except FileNotFoundError:
 
 #         with open(app_config['datastore']['filename'], 'w') as f:
 #             json_template = {

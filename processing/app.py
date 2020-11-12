@@ -23,31 +23,31 @@ def get_stats():
     """get readers book"""
     logger.info('GET request stats has been initiated')
 
-    try:
-        with open(app_config['datastore']['filename'], 'r') as f:
-            data_stats_read = f.read()
+#     try:
+#         with open(app_config['datastore']['filename'], 'r') as f:
+#             data_stats_read = f.read()
 
-            # object conversion
-            data_stats = json.loads(data_stats_read)
+#             # object conversion
+#             data_stats = json.loads(data_stats_read)
 
-            show_stats = {
-                "genre_reader_pref": data_stats["genre_reader_pref"],
-                "avg_books_reader": data_stats["avg_books_reader"],
-                "num_readers": data_stats["num_readers"],
-                "num_books": data_stats["num_books"]
-            }
+#             show_stats = {
+#                 "genre_reader_pref": data_stats["genre_reader_pref"],
+#                 "avg_books_reader": data_stats["avg_books_reader"],
+#                 "num_readers": data_stats["num_readers"],
+#                 "num_books": data_stats["num_books"]
+#             }
 
-            logger.debug(
-                'Get stats with genre_reader_pref: {}, max_books_read: {}, num_readers: {}, num_books: {}'.format(
-                    show_stats['genre_reader_pref'],
-                    show_stats['avg_books_reader'],
-                    show_stats['num_readers'],
-                    show_stats['num_books']
-                ))
+#             logger.debug(
+#                 'Get stats with genre_reader_pref: {}, max_books_read: {}, num_readers: {}, num_books: {}'.format(
+#                     show_stats['genre_reader_pref'],
+#                     show_stats['avg_books_reader'],
+#                     show_stats['num_readers'],
+#                     show_stats['num_books']
+#                 ))
 
-            logger.info('GET request stats has been completed')
+#             logger.info('GET request stats has been completed')
 
-            return show_stats, 200
+#             return show_stats, 200
 
     except FileNotFoundError:
         error_message = 'Statistics do not exist with status code 404'

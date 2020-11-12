@@ -46,6 +46,8 @@ def get_reader_book(timestamp):
 
     for book in books:
         results_list.append(book.to_dict())
+       
+    session.close()
     logger.info(cloud_log)
     logger.info('Query for Books added after {} returns {} results.'.format(timestamp,len(results_list)))
     return results_list, 200
@@ -60,7 +62,7 @@ def get_reader_user(timestamp):
 
     for peoples in readers:
         results_list.append(peoples.to_dict())
-
+    session.close()
     logger.info(cloud_log)
     logger.info('Query for Books added after {} returns {} results.'.format(timestamp, len(results_list)))
     return results_list, 200
@@ -98,6 +100,8 @@ def add_reader_user(body):
 
     session.add(rd)
     session.commit()
+    session.close()
+
     logger.info(cloud_log)
     logger.info('Stored event add_reader_book request with a unique id of '+body['reader_id'])
 

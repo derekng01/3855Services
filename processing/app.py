@@ -68,29 +68,29 @@ def populate_stats():
             data_read = f.read()
             stats_info = json.loads(data_read)
 
-#     except FileNotFoundError:
+    except FileNotFoundError:
 
-#         with open(app_config['datastore']['filename'], 'w') as f:
-#             json_template = {
+        with open(app_config['datastore']['filename'], 'w') as f:
+            json_template = {
 
 
-#                 "genre_reader_pref": 0,
+                "genre_reader_pref": 0,
 
-#                 "avg_books_reader": 0,
+                "avg_books_reader": 0,
 
-#                 "num_readers": 0,
+                "num_readers": 0,
 
-#                 "num_books": 0,
+                "num_books": 0,
 
-#                 "last_updated": "2000-01-01T00:00:00Z"
+                "last_updated": "2000-01-01T00:00:00Z"
 
-#             }
-#             f.write(json.dumps(json_template, indent=4))
+            }
+            f.write(json.dumps(json_template, indent=4))
 
-#         with open(app_config['datastore']['filename'], 'r') as f:
-#             data_read = f.read()
+        with open(app_config['datastore']['filename'], 'r') as f:
+            data_read = f.read()
 
-#             stats_info = json.loads(data_read)
+            stats_info = json.loads(data_read)
 
 #     timestamp = {"timestamp": stats_info['last_updated']}
 

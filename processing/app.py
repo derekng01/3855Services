@@ -92,13 +92,12 @@ def populate_stats():
 
             stats_info = json.loads(data_read)
 
-#     timestamp = {"timestamp": stats_info['last_updated']}
+    timestamp = {"timestamp": stats_info['last_updated']}
 
-#     get_reader_book = requests.get('{}/readers/adding_book'.format(app_config['eventstore']['url']),params=timestamp)
-#     get_reader_user = requests.get('{}/readers/user'.format(app_config['eventstore']['url']),params=timestamp)
+    get_reader_book = requests.get('{}/readers/adding_book'.format(app_config['eventstore']['url']),params=timestamp)
+    get_reader_user = requests.get('{}/readers/user'.format(app_config['eventstore']['url']),params=timestamp)
 
 
-#     print(get_reader_book, get_reader_user)
 
 #     #logs for all all gets through this api
 #     if (get_reader_book.status_code != 200):

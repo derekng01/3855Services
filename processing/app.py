@@ -61,7 +61,7 @@ def populate_stats():
 #     """Update stats on a regular basis"""
     logger.info('Regular processing for stats has started')
 
-    current_time= datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')
+    #current_time= datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')
 
     try:
         with open(app_config['datastore']['filename'], 'r') as f:

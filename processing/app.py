@@ -69,11 +69,8 @@ def populate_stats():
             stats_info = json.loads(data_read)
 
     except FileNotFoundError:
-
         with open(app_config['datastore']['filename'], 'w') as f:
             json_template = {
-
-
                 "genre_reader_pref": 0,
 
                 "avg_books_reader": 0,
@@ -92,8 +89,8 @@ def populate_stats():
 
             stats_info = json.loads(data_read)
 
-    timestamp = {"timestamp": stats_info['last_updated']}
-
+    #timestamp = {"timestamp": stats_info['last_updated']}
+    timestamp = 123
     get_reader_book = requests.get('{}/readers/adding_book'.format(app_config['eventstore']['url']),params=timestamp)
     get_reader_user = requests.get('{}/readers/user'.format(app_config['eventstore']['url']),params=timestamp)
 

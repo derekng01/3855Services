@@ -92,57 +92,57 @@ def populate_stats():
     current_time = {
         "timestamp": stats_info['last_updated']
     }
-    #get_reader_book = requests.get('{}/readers/adding_book'.format(app_config['eventstore']['url']),params=current_time)
-    #get_reader_user = requests.get('{}/readers/user'.format(app_config['eventstore']['url']),params=current_time)
+    get_reader_book = requests.get('{}/readers/adding_book'.format(app_config['eventstore']['url']),params=current_time)
+    get_reader_user = requests.get('{}/readers/user'.format(app_config['eventstore']['url']),params=current_time)
 
 
 
-#     #logs for all all gets through this api
-#     if (get_reader_book.status_code != 200):
-#         logger.error('Could not receive events GET list with status code {}'.format(
-#             get_reader_book.status_code))
-#     else:
-#         logger.info('{} events received from GET request with status code {}'.format(
-#             len(get_reader_book.json()), get_reader_book.status_code))
+    #logs for all all gets through this api
+    if (get_reader_book.status_code != 200):
+        logger.error('Could not receive events GET list with status code {}'.format(
+            get_reader_book.status_code))
+    else:
+        logger.info('{} events received from GET request with status code {}'.format(
+            len(get_reader_book.json()), get_reader_book.status_code))
 
-#         stats_info["num_books"] = stats_info["num_books"] + len(
-#                 get_reader_book.json())
+        stats_info["num_books"] = stats_info["num_books"] + len(
+                get_reader_book.json())
 
-#         #Total number of books
-#         stats_info["num_books"] = stats_info["num_books"] + len(get_reader_book.json())
-#         #Top genre readers pref
-#         stats_info["genre_reader_pref"] = stats_info["genre_reader_pref"]  + int(len(get_reader_book.json())) / 2
-
-
-#         #avg books read
-#         stats_info["avg_books_reader"] = stats_info["avg_books_reader"] + (len(get_reader_book.json())) #logic incorrect but will do for now
+        #Total number of books
+        stats_info["num_books"] = stats_info["num_books"] + len(get_reader_book.json())
+        #Top genre readers pref
+        stats_info["genre_reader_pref"] = stats_info["genre_reader_pref"]  + int(len(get_reader_book.json())) / 2
 
 
-#     if (get_reader_user.status_code != 200):
-#         logger.error('Could not receive events GET list with status code {}'.format(
-#                 get_reader_user.status_code))
-#     else:
-#         logger.info('{} events received from GET request with status code {}'.format(
-#                 len(get_reader_user.json()),
-#                 get_reader_user.status_code))
-
-#         #Total number of readers
-#         stats_info["num_readers"] = stats_info["num_readers"] + len(get_reader_user.json())
+        #avg books read
+        stats_info["avg_books_reader"] = stats_info["avg_books_reader"] + (len(get_reader_book.json())) #logic incorrect but will do for now
 
 
-#     with open(app_config['datastore']['filename'], 'w') as f:
-#         stats_info['last_updated'] = current_time
-#         f.write(json.dumps(stats_info, indent=4))
+    if (get_reader_user.status_code != 200):
+        logger.error('Could not receive events GET list with status code {}'.format(
+                get_reader_user.status_code))
+    else:
+        logger.info('{} events received from GET request with status code {}'.format(
+                len(get_reader_user.json()),
+                get_reader_user.status_code))
 
-#     logger.debug("Data store updated with num_books: {}, genre_reader_pref: {}, avg_books_reader: {}, num_readers: {}".format(
-#         stats_info["num_books"],
-#         stats_info["genre_reader_pref"],
-#         stats_info["avg_books_reader"],
-#         stats_info["num_readers"],
-#         stats_info["last_updated"]
-#         ))
+        #Total number of readers
+        stats_info["num_readers"] = stats_info["num_readers"] + len(get_reader_user.json())
 
-#     logger.info('Period processing for stats has ended')
+
+    with open(app_config['datastore']['filename'], 'w') as f:
+        stats_info['last_updated'] = current_time
+        f.write(json.dumps(stats_info, indent=4))
+
+    logger.debug("Data store updated with num_books: {}, genre_reader_pref: {}, avg_books_reader: {}, num_readers: {}".format(
+        stats_info["num_books"],
+        stats_info["genre_reader_pref"],
+        stats_info["avg_books_reader"],
+        stats_info["num_readers"],
+        stats_info["last_updated"]
+        ))
+
+    logger.info('Period processing for stats has ended')
 
 def init_scheduler():
     sched = BackgroundScheduler(daemon=True)

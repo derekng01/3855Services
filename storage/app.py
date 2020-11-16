@@ -44,7 +44,6 @@ def get_reader_book(timestamp):
     timestamp_datetime = datetime.datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
     results_list =[]
     books = session.query(Book).filter(Book.date_created >= timestamp_datetime)
-    logger.info(len(books))
 
     for book in books:
         results_list.append(book.to_dict())
@@ -61,7 +60,6 @@ def get_reader_user(timestamp):
     timestamp_datetime = datetime.datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
     results_list = []
     readers = session.query(Reader).filter(Reader.date_created >= timestamp_datetime)
-    logger.info(len(readers))
     for peoples in readers:
         results_list.append(peoples.to_dict())
         logger.info(peoples)

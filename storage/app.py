@@ -41,31 +41,31 @@ def get_reader_book(timestamp):
     """get readers book"""
     session = DB_SESSION()
 
-#     timestamp_datetime = datetime.datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
-#     results_list =[]
-#     books = session.query(Book).filter(Book.date_created >= timestamp_datetime)
+    timestamp_datetime = datetime.datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
+    results_list =[]
+    books = session.query(Book).filter(Book.date_created >= timestamp_datetime)
 
 #     for book in books:
 #         results_list.append(book.to_dict())
        
-#     session.close()
-#     logger.info(cloud_log)
-#     logger.info('Query for Books added after {} returns {} results.'.format(timestamp,len(results_list)))
+    session.close()
+    logger.info(cloud_log)
+    logger.info('Query for Books added after {} returns {} results.'.format(timestamp,len(results_list)))
     return results_list, 200
 
 
 def get_reader_user(timestamp):
     session = DB_SESSION()
 
-#     timestamp_datetime = datetime.datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
-#     results_list = []
-#     readers = session.query(Reader).filter(Reader.date_created >= timestamp_datetime)
+    timestamp_datetime = datetime.datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
+    results_list = []
+    readers = session.query(Reader).filter(Reader.date_created >= timestamp_datetime)
 
 #     for peoples in readers:
 #         results_list.append(peoples.to_dict())
-#     session.close()
-#     logger.info(cloud_log)
-#     logger.info('Query for Books added after {} returns {} results.'.format(timestamp, len(results_list)))
+    session.close()
+    logger.info(cloud_log)
+    logger.info('Query for Books added after {} returns {} results.'.format(timestamp, len(results_list)))
     return results_list, 200
 
 

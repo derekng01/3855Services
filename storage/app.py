@@ -39,7 +39,7 @@ TOPIC = app_config["events"]["topic"]
 results_list=[]
 def get_reader_book(timestamp):
     """get readers book"""
-#     session = DB_SESSION()
+    session = DB_SESSION()
 
 #     timestamp_datetime = datetime.datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
 #     results_list =[]
@@ -55,7 +55,7 @@ def get_reader_book(timestamp):
 
 
 def get_reader_user(timestamp):
-#     session = DB_SESSION()
+    session = DB_SESSION()
 
 #     timestamp_datetime = datetime.datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
 #     results_list = []

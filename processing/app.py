@@ -61,7 +61,7 @@ def populate_stats():
 #     """Update stats on a regular basis"""
     logger.info('Regular processing for stats has started')
 
-    #current_time= datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')
+    current_time= datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')
 
     try:
         with open(app_config['datastore']['filename'], 'r') as f:
@@ -89,9 +89,8 @@ def populate_stats():
 
             stats_info = json.loads(data_read)
 
-    current_time = {
-        "timestamp": stats_info['last_updated']
-    }
+    timestamp = {"timestamp": stats_info['last_updated']}
+
     get_reader_book = requests.get('{}/readers/adding_book'.format(app_config['eventstore']['url']),params=current_time)
     get_reader_user = requests.get('{}/readers/user'.format(app_config['eventstore']['url']),params=current_time)
 

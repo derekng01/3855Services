@@ -91,8 +91,8 @@ def populate_stats():
 
     timestamp = {"timestamp": stats_info['last_updated']}
 
-    get_reader_book = requests.get('{}/readers/adding_book'.format(app_config['eventstore']['url']),params=current_time)
-    get_reader_user = requests.get('{}/readers/user'.format(app_config['eventstore']['url']),params=current_time)
+    get_reader_book = requests.get('{}/readers/adding_book'.format(app_config['eventstore']['url']),params=timestamp)
+    get_reader_user = requests.get('{}/readers/user'.format(app_config['eventstore']['url']),params=timestamp)
 
 
 

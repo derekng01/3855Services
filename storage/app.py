@@ -10,18 +10,33 @@ from pykafka import KafkaClient
 import json
 from pykafka.common import OffsetType
 from threading import Thread
-
+import os
 import yaml
 import logging.config
 
 now = datetime.datetime.now()
 
-with open('app_conf.yml','r') as f:
-    app_config = yaml.safe_load(f.read())
 
-with open('log_conf.yaml','r') as f:
-    log_config = yaml.safe_load(f.read())
+if "TARGET_ENV" in os.environ and os.environ["TARGET_ENV"] == "test":
+    print("In Test Environment")
+    app_conf_file = "/config/app_conf.yml"
+    log_conf_file = "/config/log_conf.yaml"
+else:
+    print("In Dev Environment")
+    app_conf_file = "app_conf.yml"
+    log_conf_file = "log_conf.yaml"
+
+with open (app_conf_file, 'r') as f:
+    app_config=yaml.safe_load(f.read())
+
+with open(log_conf_file,'r') as f:
+    log_config=yaml.safe_load(f.read())
     logging.config.dictConfig(log_config)
+
+logger = logging.getLogger('basicLogger')
+logger.info("App Conf File: %s" % app_conf_file)
+logger.info("Log Conf File: %s" % log_conf_file)
+
 
 
 DB_ENGINE = create_engine('mysql+pymysql://{}:{}@{}:{}/{}'.format(
@@ -32,7 +47,6 @@ DB_SESSION = sessionmaker(bind=DB_ENGINE)
 cloud_log ="Connected to: {} on port: {} " .format(
     app_config['datastore']['hostname'], app_config['datastore']['port'])
 
-logger = logging.getLogger('basicLogger')
 HOSTNAME = "{}:{}".format(app_config["events"]["hostname"], app_config["events"]["port"])
 TOPIC = app_config["events"]["topic"]
 

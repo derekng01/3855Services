@@ -83,7 +83,7 @@ def add_reader_user(body):
     return NoContent, 201
 
 app = connexion.FlaskApp(__name__, specification_dir='')
-app.add_api("derekng_lab1.yaml", base_path='/', strict_validation=True, validate_responses=True)
+app.add_api("derekng_lab1.yaml", base_path='/receiver', strict_validation=True, validate_responses=True)
 
 
 if __name__=="__main__":

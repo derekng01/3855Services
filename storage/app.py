@@ -158,7 +158,7 @@ def process_messages():
 
 
 app = connexion.FlaskApp(__name__, specification_dir='')
-app.add_api("derekng_lab1.yaml", base_path='/', strict_validation=True, validate_responses=True)
+app.add_api("derekng_lab1.yaml", base_path='/storage', strict_validation=True, validate_responses=True)
 
 
 
